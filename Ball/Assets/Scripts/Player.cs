@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     public int boostForce;
     public int maxSpeed;
     public Vector2 camAngle;
+    public int camAngleLimit;
     Vector2 input;
     Vector3 camF, camR;
 
@@ -55,7 +56,7 @@ public class Player : MonoBehaviour
         camAngle.x += Input.GetAxis("Mouse X") * Time.deltaTime * 180;
         camAngle.y += Input.GetAxis("Mouse Y") * Time.deltaTime * 180;
 
-        camAngle.y = Mathf.Clamp(camAngle.y, -5, 5);
+        camAngle.y = Mathf.Clamp(camAngle.y, -camAngleLimit, camAngleLimit);
         cameraPivot.transform.rotation = Quaternion.Euler(camAngle.y, camAngle.x, 0);
         cameraPivot.transform.position = transform.position;
     }
