@@ -10,7 +10,7 @@ public class Bumper : MonoBehaviour
     public int force;
     public int reloadTime;
     int nextReloadTime;
-    public bool bumped;
+    public bool bumped, reloading;
     public float resetSpeed;
 
 
@@ -32,10 +32,14 @@ public class Bumper : MonoBehaviour
         }
         else
         {
-            startPosition = _base.transform.position + (_base.transform.up / 4);
+            startPosition = _base.transform.position + (_base.transform.up / 3);
             if (transform.position != startPosition)
             {
                 RestorePosition();
+            }
+            else
+            {
+                reloading = false;
             }
 
         }
@@ -55,6 +59,7 @@ public class Bumper : MonoBehaviour
 
     void RestorePosition()
     {
+        reloading = true;
         transform.position = Vector3.MoveTowards(transform.position, startPosition, resetSpeed * Time.deltaTime);
     }
 
@@ -74,7 +79,7 @@ public class Bumper : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Ball" && !bumped)
+        if (collision.gameObject.tag == "Player" && !reloading)
         {
             Bump();
         }
