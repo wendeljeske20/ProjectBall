@@ -37,10 +37,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4335958748695830}
+  - component: {fileID: 114205362414088010}
   - component: {fileID: 33926648967591560}
   - component: {fileID: 23260478951134480}
   - component: {fileID: 65003350332397150}
-  - component: {fileID: 114205362414088010}
   - component: {fileID: 54357864530279892}
   m_Layer: 0
   m_Name: Top
@@ -56,7 +56,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1037824643424918}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.93, y: 1.37, z: 1}
+  m_LocalPosition: {x: 3.07, y: 1.37, z: -6}
   m_LocalScale: {x: 2, y: 0.5, z: 2}
   m_Children:
   - {fileID: 4335958748695830}

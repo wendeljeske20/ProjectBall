@@ -16,13 +16,15 @@ public class Player : MonoBehaviour
     public int camAngleLimit;
     Vector2 input;
     Vector3 camF, camR, camU;
-    public Vector3 goRotation;
+
+    
 
     Rigidbody rb;
 
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+       
     }
 
     void Update()
@@ -61,6 +63,8 @@ public class Player : MonoBehaviour
         camAngle.y = Mathf.Clamp(camAngle.y, -camAngleLimit, camAngleLimit);
         cameraPivot.transform.rotation = Quaternion.Euler(camAngle.y, camAngle.x, camAngle.z);
         cameraPivot.transform.position = transform.position;
+
+       
     }
 
     void OnCollisionStay(Collision collision)
@@ -90,8 +94,8 @@ public class Player : MonoBehaviour
 
         camF = camera.transform.forward;
         camR = camera.transform.right;
-        //camF.y = 0;
-        //camR.y = 0;
+        camF.y = 0;
+        camR.y = 0;
         camF = camF.normalized;
         camR = camR.normalized;
 
