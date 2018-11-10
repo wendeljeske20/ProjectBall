@@ -9,46 +9,47 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 1772424550254934}
+  m_RootGameObject: {fileID: 1576764328171854}
   m_IsPrefabAsset: 1
---- !u!1 &1772424550254934
+--- !u!1 &1576764328171854
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 4943481164889904}
-  - component: {fileID: 114688807947047474}
-  - component: {fileID: 33311582361909720}
-  - component: {fileID: 23336024621260214}
-  - component: {fileID: 65555134717436130}
+  - component: {fileID: 4087993223822148}
+  - component: {fileID: 114244535855474116}
+  - component: {fileID: 33577800862440924}
+  - component: {fileID: 23297122495611386}
+  - component: {fileID: 65005009858457556}
+  - component: {fileID: 65850269882062920}
   m_Layer: 0
-  m_Name: Booster
+  m_Name: Turbine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &4943481164889904
+--- !u!4 &4087993223822148
 Transform:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1772424550254934}
-  m_LocalRotation: {x: -0, y: 0.7071065, z: -0, w: 0.7071071}
-  m_LocalPosition: {x: -2.91, y: 0.61, z: -4.33}
-  m_LocalScale: {x: 3, y: 1, z: 3}
+  m_GameObject: {fileID: 1576764328171854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 1.7593546, y: 0.67004395, z: 6.547289}
+  m_LocalScale: {x: 1.9769, y: 0.15109052, z: 1.9769}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90.00001, z: 0}
---- !u!23 &23336024621260214
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!23 &23297122495611386
 MeshRenderer:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1772424550254934}
+  m_GameObject: {fileID: 1576764328171854}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -58,7 +59,7 @@ MeshRenderer:
   m_ReflectionProbeUsage: 1
   m_RenderingLayerMask: 4294967295
   m_Materials:
-  - {fileID: 2100000, guid: a81b2501299963b4fb47a0c8b30f583c, type: 2}
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -78,35 +79,46 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!33 &33311582361909720
+--- !u!33 &33577800862440924
 MeshFilter:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1772424550254934}
-  m_Mesh: {fileID: 4300000, guid: 5699444bb2e243d4a9d842493149a805, type: 3}
---- !u!65 &65555134717436130
+  m_GameObject: {fileID: 1576764328171854}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65005009858457556
 BoxCollider:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1772424550254934}
+  m_GameObject: {fileID: 1576764328171854}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65850269882062920
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1576764328171854}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 1, z: 0.8}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &114688807947047474
+  m_Size: {x: 1, y: 45.9, z: 1}
+  m_Center: {x: 0, y: 22.2, z: 0}
+--- !u!114 &114244535855474116
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1772424550254934}
+  m_GameObject: {fileID: 1576764328171854}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4480165943907db45be51b5d687c8377, type: 3}
+  m_Script: {fileID: 11500000, guid: 1c44cebcfce97e842b2d2459a9bebd5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scroll: {x: 0, y: 1.5}
-  boostForce: 3000
+  force: 50
