@@ -117,9 +117,7 @@ MonoBehaviour:
   respawnPosition: {x: 0, y: 0, z: 0}
   jumpForce: 1000
   jumpCooldown: 0.4
-  canJump: 1
   boostCooldown: 3
-  canBoost: 1
   speed: 50
   boostForce: 1500
   maxSpeed: 20
