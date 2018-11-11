@@ -22,17 +22,14 @@ public class Bumper : MonoBehaviour
 
     void Update()
     {
-        //if (Input.GetKeyDown(KeyCode.Space))
-        //{
-        //    Boost();
-        //}
+        
         if (bumped)
         {
             nextReloadTime++;
         }
         else
         {
-            startPosition = _base.transform.position + (_base.transform.up / 3);
+            startPosition = _base.transform.position + (_base.transform.up / 3.5f);
             if (transform.position != startPosition)
             {
                 RestorePosition();
@@ -81,6 +78,7 @@ public class Bumper : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" && !reloading)
         {
+           // collision.gameObject.GetComponent<Rigidbody>().velocity = Vector3.zero;
             Bump();
         }
     }

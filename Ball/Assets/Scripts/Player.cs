@@ -11,8 +11,10 @@ public class Player : MonoBehaviour
     //public bool grounded;
     public int jumpForce;
     int jumpCount = 2;
-    public int jumpCooldown = 20;
-    int nextJumpCooldown;
+    public float jumpCooldown;
+    bool canJump = true;
+    public float boostCooldown;
+    bool canBoost = true;
     public int speed;
     public int boostForce;
     public int maxSpeed;
@@ -34,29 +36,43 @@ public class Player : MonoBehaviour
         respawnPosition = transform.position;
     }
 
+    
     void Update()
     {
 
         MovementControls();
         CameraControls();
 
-        nextJumpCooldown++;
+        
 
-        if (Input.GetButtonDown("Boost"))
+        if (Input.GetButtonDown("Boost") && canBoost)
         {
             Boost();
         }
-        if (Input.GetButtonDown("Jump") && jumpCount > 0 && nextJumpCooldown >= jumpCooldown)
+        if (Input.GetButtonDown("Jump") && jumpCount > 0 && canJump)
         {
             Jump();
         }
         if (Input.GetButtonDown("Respawn"))
         {
-            Respawn();
+            Respawn(2);
         }
     }
 
-    void Respawn()
+    IEnumerator CanJump()
+    {
+        yield return new WaitForSeconds(jumpCooldown);
+        canJump = true;
+    }
+
+    IEnumerator CanBoost()
+    {
+        yield return new WaitForSeconds(boostCooldown);
+        canBoost = true;
+    }
+
+
+    void Respawn(int test)
     {
         transform.position = respawnPosition;
         rb.velocity = Vector3.zero;
@@ -66,17 +82,19 @@ public class Player : MonoBehaviour
 
     void Boost()
     {
+        canBoost = false;
         Vector2 force = input;
         force = force.normalized;
         rb.AddForce((camF * force.y + camR * force.x) * boostForce);
+        StartCoroutine(CanBoost());
     }
 
     void Jump()
     {
+        canJump = false;
         jumpCount--;
-        nextJumpCooldown = 0;
         rb.AddForce(Vector3.up * jumpForce);
-
+        StartCoroutine(CanJump());
     }
 
     void CameraControls()

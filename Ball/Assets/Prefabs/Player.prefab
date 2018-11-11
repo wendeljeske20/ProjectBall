@@ -38,7 +38,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1405840404276702}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.7099991, y: 1.21, z: -14.600001}
+  m_LocalPosition: {x: 1.7099991, y: 2.1900005, z: -14.600001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -116,7 +116,10 @@ MonoBehaviour:
   camera: {fileID: 0}
   respawnPosition: {x: 0, y: 0, z: 0}
   jumpForce: 1000
-  jumpCooldown: 20
+  jumpCooldown: 0.4
+  canJump: 1
+  boostCooldown: 3
+  canBoost: 1
   speed: 50
   boostForce: 1500
   maxSpeed: 20
