@@ -6,22 +6,32 @@ public class Spinner : MonoBehaviour
 {
     public GameObject father;
     public GameObject[] platformer;
+    Rigidbody rb;
+
+    public float speed;
     public float rotationX;
+
+    private void Start()
+    {
+        rb = GetComponent<Rigidbody>();
+    }
+
     void Update()
     {
-        rotationX = GetComponent<Rigidbody>().angularVelocity.x;
+        rotationX = rb.angularVelocity.x;
+
         for (int i = 0; i < platformer.Length; i++)
         {
             platformer[i].transform.rotation = father.transform.rotation;
         }
-        if (GetComponent<Rigidbody>().angularVelocity.x < -0.1)
+        if (rb.angularVelocity.x < -0.1)
         {
-            father.transform.Translate(new Vector3(0, 0, rotationX * 3) * Time.deltaTime);
+            father.transform.Translate(new Vector3(0, 0, rotationX * speed) * Time.deltaTime);
         }
-        else if (GetComponent<Rigidbody>().angularVelocity.x > 0.1)
+        else if (rb.angularVelocity.x > 0.1)
         {
-            father.transform.Translate(new Vector3(0, 0, rotationX * 3) * Time.deltaTime);
+            father.transform.Translate(new Vector3(0, 0, rotationX * speed) * Time.deltaTime);
         }
     }
-    
+
 }

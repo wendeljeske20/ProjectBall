@@ -6,25 +6,32 @@ public class Player : MonoBehaviour
 {
     public GameObject cameraPivot;
     public GameObject camera;
+    public Vector3 respawnPosition;
+
+    //public bool grounded;
     public int jumpForce;
     int jumpCount = 2;
-    //public bool grounded;
+    public int jumpCooldown = 20;
+    int nextJumpCooldown;
     public int speed;
     public int boostForce;
     public int maxSpeed;
+
+
     public Vector3 camAngle;
     public int camAngleLimit;
-    Vector2 input;
+    public Vector2 input;
     Vector3 camF, camR, camU;
 
-    
+
 
     Rigidbody rb;
 
     private void Start()
     {
+        //Physics.gravity = new Vector3(0,-20,0);
         rb = GetComponent<Rigidbody>();
-       
+        respawnPosition = transform.position;
     }
 
     void Update()
@@ -33,24 +40,41 @@ public class Player : MonoBehaviour
         MovementControls();
         CameraControls();
 
+        nextJumpCooldown++;
+
         if (Input.GetButtonDown("Boost"))
         {
             Boost();
         }
-        if (Input.GetButtonDown("Jump") && jumpCount > 0)
+        if (Input.GetButtonDown("Jump") && jumpCount > 0 && nextJumpCooldown >= jumpCooldown)
         {
             Jump();
         }
+        if (Input.GetButtonDown("Respawn"))
+        {
+            Respawn();
+        }
+    }
+
+    void Respawn()
+    {
+        transform.position = respawnPosition;
+        rb.velocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+        
     }
 
     void Boost()
     {
-        rb.AddForce((camF * input.y + camR * input.x) * boostForce);
+        Vector2 force = input;
+        force = force.normalized;
+        rb.AddForce((camF * force.y + camR * force.x) * boostForce);
     }
 
     void Jump()
     {
         jumpCount--;
+        nextJumpCooldown = 0;
         rb.AddForce(Vector3.up * jumpForce);
 
     }
@@ -64,7 +88,7 @@ public class Player : MonoBehaviour
         cameraPivot.transform.rotation = Quaternion.Euler(camAngle.y, camAngle.x, camAngle.z);
         cameraPivot.transform.position = transform.position;
 
-       
+
     }
 
     void OnCollisionStay(Collision collision)
@@ -72,23 +96,23 @@ public class Player : MonoBehaviour
         foreach (ContactPoint contact in collision.contacts)
         {
             print(contact.thisCollider.name + " hit " + contact.otherCollider.name);
-            
-            
+
+
             //Debug.DrawRay(contact.point, contact.normal, Color.blue);
             Debug.DrawLine(transform.position, contact.point - contact.normal, Color.red);
             Vector3 dir = contact.point - contact.normal;
             //camAngle.z = 90;
             Debug.DrawLine(transform.position, dir);
 
-           // camAngle.z = Vector3.Angle(collision.transform.right, dir);
+            // camAngle.z = Vector3.Angle(collision.transform.right, dir);
         }
 
-        
+
     }
 
     void MovementControls()
     {
-        
+
         input = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
         input = Vector2.ClampMagnitude(input, 1);
 
@@ -99,7 +123,7 @@ public class Player : MonoBehaviour
         camF = camF.normalized;
         camR = camR.normalized;
 
-      
+
         if (rb.velocity.magnitude <= maxSpeed)
         {
             if (IsGrounded())
@@ -119,7 +143,7 @@ public class Player : MonoBehaviour
     {
         Collider collider = GetComponent<Collider>();
         float distToGround = collider.bounds.extents.y;
-        
+
         return Physics.Raycast(transform.position, -Vector3.up, distToGround + 0.1f);
     }
 
