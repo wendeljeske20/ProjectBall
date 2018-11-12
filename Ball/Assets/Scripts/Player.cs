@@ -125,8 +125,25 @@ public class Player : MonoBehaviour
             // camAngle.z = Vector3.Angle(collision.transform.right, dir);
         }
 
+        if (collision.gameObject.tag == "MobilePlatform")
+        {
+            //rb.velocity = collision.gameObject.GetComponent<Rigidbody>().velocity;
+            transform.parent = collision.gameObject.transform;
+
+        }
 
     }
+
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.gameObject.tag == "MobilePlatform")
+        {
+            transform.parent = null;
+
+        }
+    }
+
+    
 
     void MovementControls()
     {
