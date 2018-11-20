@@ -31,14 +31,16 @@ public class GridPlatform : MonoBehaviour {
         if (c.gameObject.tag == "Player")
         {
             stop = true;
-            transform.position += -arrow.transform.right / 8;
+            transform.Translate(-arrow.transform.right / 8);
             //GetComponent<Rigidbody>().AddForce(-arrow.transform.right / 8);
         }
     }
-    private void OnTriggerExit(Collider c)
+    private void OnCollisionExit(Collision c)
     {
-        if (c.tag == "Player")
+        if (c.gameObject.tag == "Player")
         {
+            transform.Translate(Vector3.zero);
+            timer = 0;
             stop = false;
         }
     }
