@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: 549edf647a5061c4ca573410e4044443
+=======
+guid: 629171c90478f9440b955b607822c50e
+>>>>>>> TestScene
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}
