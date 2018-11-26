@@ -1139,7 +1139,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arrow: {fileID: 1590411633}
   timer: 0
-  rotationTime: 50
+  rotationTime: 75
   rotationY: 0
 --- !u!95 &370450023
 Animator:
@@ -2133,15 +2133,15 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4761708841710008, guid: a72211090e9ec4348b00879e2b52f95e, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 49.42
+      value: 39.4
       objectReference: {fileID: 0}
     - target: {fileID: 4761708841710008, guid: a72211090e9ec4348b00879e2b52f95e, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 9
+      value: 21.8
       objectReference: {fileID: 0}
     - target: {fileID: 4761708841710008, guid: a72211090e9ec4348b00879e2b52f95e, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -28.36
+      value: -11.7
       objectReference: {fileID: 0}
     - target: {fileID: 4761708841710008, guid: a72211090e9ec4348b00879e2b52f95e, type: 2}
       propertyPath: m_LocalRotation.x
