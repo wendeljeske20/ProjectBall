@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
     public int speed;
     public int boostForce;
     public int maxSpeed;
+    public float gravity;
 
 
     public Vector3 camAngle;
@@ -36,14 +37,22 @@ public class Player : MonoBehaviour
         respawnPosition = transform.position;
     }
 
-    
+
     void Update()
     {
+
+        if (!IsGrounded())
+        { // most code has something like this already
+            Vector3 vel = rb.velocity;
+            vel.y -= gravity * Time.deltaTime;
+            rb.velocity = vel;
+
+        }
 
         MovementControls();
         CameraControls();
 
-        
+
 
         if (Input.GetButtonDown("Boost") && canBoost)
         {
@@ -77,7 +86,7 @@ public class Player : MonoBehaviour
         transform.position = respawnPosition;
         rb.velocity = Vector3.zero;
         rb.angularVelocity = Vector3.zero;
-        
+
     }
 
     void Boost()
@@ -143,7 +152,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    
+
 
     void MovementControls()
     {
